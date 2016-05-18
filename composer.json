@@ -14,5 +14,8 @@
             "email": "frostwong@gmail.com"
         }
     ],
-    "minimum-stability": "RC"
+    "minimum-stability": "RC",
+    "autoload": {
+        "psr-4": {"Lovelock\Kcontainer": "src/"}
+    }
 }
