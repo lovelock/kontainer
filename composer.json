@@ -16,6 +16,6 @@
     ],
     "minimum-stability": "RC",
     "autoload": {
-        "psr-4": {"Lovelock\Kcontainer": "src/"}
+        "psr-4": {"Lovelock\\Kcontainer\\": "src/"}
     }
 }
