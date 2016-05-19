@@ -2,6 +2,8 @@
 
 namespace Lovelock\Kontainer;
 
-interface KontainerInterface
+use Interop\Container\ContainerInterface;
+
+interface KontainerInterface extends ContainerInterface
 {
 }
