@@ -2,9 +2,10 @@
 
 namespace Lovelock\Kontainer;
 
-use Exception\KontainerException;
-use Exception\ServiceNotFoundException;
-use \ReflectionClass;
+
+use Lovelock\Kontainer\Exception\KontainerException;
+use Lovelock\Kontainer\Exception\ServiceNotFoundException;
+use ReflectionClass;
 
 class Kontainer implements KontainerInterface
 {
@@ -72,7 +73,25 @@ class Kontainer implements KontainerInterface
                 $argumentServiceName = $argumentDefinition->getName();
 
                 $arguments[] = $this->get($argumentServiceName);
+            } else {
+                $arguments[] = $argumentDefinition;
             }
+        }
+
+        return $arguments;
+    }
+
+    public function initializeService($service, $name, array $callDefinitions)
+    {
+        foreach ($callDefinitions as $callDefinition) {
+            if (!is_array($callDefinition) || !isset($callDefinition['method'])) {
+                throw new KontainerException($name . ' must be arrays containing a \'method\' key');
+            } elseif (!is_callable($service, $callDefinition['method'])) {
+                throw new KontainerException($name . ' asks for a callable method ' . $callDefinition['method']);
+            }
+
+            $arguments = isset($callDefinition['arguments']) ? $this->resolveArguments($callDefinition['arguments']) : [];
+            call_user_func_array([$service, $callDefinition['method']], $arguments);
         }
     }
 }
