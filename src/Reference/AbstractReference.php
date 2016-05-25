@@ -6,7 +6,7 @@
  * Time: 12:12 AM
  */
 
-namespace Lovelock\Kontainer;
+namespace Lovelock\Kontainer\Reference;
 
 
 abstract class AbstractReference

@@ -6,7 +6,7 @@
  * Time: 12:13 AM
  */
 
-namespace Lovelock\Kontainer;
+namespace Lovelock\Kontainer\Reference;
 
 
 class ServiceReference extends AbstractReference

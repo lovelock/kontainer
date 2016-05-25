@@ -68,7 +68,6 @@ class Kontainer implements KontainerInterface
         $arguments = [];
 
         foreach ($argumentDefinitions as $argumentDefinition) {
-            //TODO
             if ($argumentDefinition instanceof ServiceReference) {
                 $argumentServiceName = $argumentDefinition->getName();
 
